@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<plugin>
+
+  <extension point="org.eclipse.emf.ecore.generated_package">
+    <package 
+       uri = "http://www.xtext.org/example/entity/EntityDSL" 
+       class = "org.xtext.example.entity.entityDSL.EntityDSLPackage"
+       genModel = "model/generated/EntityDSL.genmodel" /> 
+	
+  </extension>
+
+
+
+</plugin>

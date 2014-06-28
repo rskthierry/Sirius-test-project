@@ -1,0 +1,14 @@
+grammar org.xtext.example.entity.EntityDSL with org.eclipse.xtext.common.Terminals
+
+generate entityDSL "http://www.xtext.org/example/entity/EntityDSL"
+
+EntityModel:
+	entities+=Entity*;
+
+Entity:
+	'entity' name=ID ('extends' parent=[Entity|ID])? '{'
+	attributes+=Attribute*
+	'}';
+
+Attribute:
+	'attribute' name=ID (':' type=[Entity|ID])?;
