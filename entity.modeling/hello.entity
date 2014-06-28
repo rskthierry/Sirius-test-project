@@ -1,0 +1,18 @@
+entity Entity01 {
+	attribute attribute01 : Entity02	
+	attribute attribute02	
+}
+
+entity Entity02 extends Entity01 {
+	attribute attribute03	
+	attribute attribute04	
+}
+
+entity Entity03 extends Entity02 {
+	attribute attribute03	
+	attribute attribute04	
+}
+entity Entity04 extends Entity03 {
+	attribute attribute03	
+	attribute attribute04	
+}
