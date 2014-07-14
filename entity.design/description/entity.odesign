@@ -12,7 +12,7 @@
           </style>
         </edgeMappings>
         <edgeMappings label="type" sourceMapping="//@ownedViewpoints[name='entities']/@ownedRepresentations[name='']/@defaultLayer/@containerMappings[name='']/@subNodeMappings[name='']" targetMapping="//@ownedViewpoints[name='entities']/@ownedRepresentations[name='']/@defaultLayer/@containerMappings[name='']" targetFinderExpression="feature:type">
-          <style lineStyle="dash" sizeComputationExpression="2">
+          <style sizeComputationExpression="2" routingStyle="manhattan">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <centerLabelStyleDescription labelExpression="type">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>

@@ -1,18 +1,13 @@
 entity Entity01 {
-	attribute attribute01 : Entity02	
-	attribute attribute02	
+	attribute attribute01 : Entity03	
+	attribute attribute02
 }
 
 entity Entity02 extends Entity01 {
 	attribute attribute03	
-	attribute attribute04	
+	attribute attribute04 : Entity03
 }
 
 entity Entity03 extends Entity02 {
-	attribute attribute03	
-	attribute attribute04	
-}
-entity Entity04 extends Entity03 {
-	attribute attribute03	
-	attribute attribute04	
+	attribute attribute05	
 }
