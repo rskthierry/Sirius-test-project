@@ -9,5 +9,5 @@ entity Entity02 extends Entity01 {
 }
 
 entity Entity03 extends Entity02 {
-	attribute attribute05	
+	attribute attribute05	 
 }
