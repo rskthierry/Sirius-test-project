@@ -72,10 +72,17 @@ public class EntityDSLSwitch<T> extends Switch<T>
   {
     switch (classifierID)
     {
-      case EntityDSLPackage.ENTITY_MODEL:
+      case EntityDSLPackage.NAMESPACE_DEFINITION:
       {
-        EntityModel entityModel = (EntityModel)theEObject;
-        T result = caseEntityModel(entityModel);
+        NamespaceDefinition namespaceDefinition = (NamespaceDefinition)theEObject;
+        T result = caseNamespaceDefinition(namespaceDefinition);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case EntityDSLPackage.NAMESPACE_DECLARATION:
+      {
+        NamespaceDeclaration namespaceDeclaration = (NamespaceDeclaration)theEObject;
+        T result = caseNamespaceDeclaration(namespaceDeclaration);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -98,17 +105,33 @@ public class EntityDSLSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Entity Model</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Namespace Definition</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Entity Model</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Namespace Definition</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseEntityModel(EntityModel object)
+  public T caseNamespaceDefinition(NamespaceDefinition object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Namespace Declaration</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Namespace Declaration</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseNamespaceDeclaration(NamespaceDeclaration object)
   {
     return null;
   }

@@ -57,32 +57,69 @@ public interface EntityDSLPackage extends EPackage
   EntityDSLPackage eINSTANCE = org.xtext.example.entity.entityDSL.impl.EntityDSLPackageImpl.init();
 
   /**
-   * The meta object id for the '{@link org.xtext.example.entity.entityDSL.impl.EntityModelImpl <em>Entity Model</em>}' class.
+   * The meta object id for the '{@link org.xtext.example.entity.entityDSL.impl.NamespaceDefinitionImpl <em>Namespace Definition</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see org.xtext.example.entity.entityDSL.impl.EntityModelImpl
-   * @see org.xtext.example.entity.entityDSL.impl.EntityDSLPackageImpl#getEntityModel()
+   * @see org.xtext.example.entity.entityDSL.impl.NamespaceDefinitionImpl
+   * @see org.xtext.example.entity.entityDSL.impl.EntityDSLPackageImpl#getNamespaceDefinition()
    * @generated
    */
-  int ENTITY_MODEL = 0;
+  int NAMESPACE_DEFINITION = 0;
 
   /**
-   * The feature id for the '<em><b>Entities</b></em>' containment reference list.
+   * The feature id for the '<em><b>Namespace</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int ENTITY_MODEL__ENTITIES = 0;
+  int NAMESPACE_DEFINITION__NAMESPACE = 0;
 
   /**
-   * The number of structural features of the '<em>Entity Model</em>' class.
+   * The feature id for the '<em><b>Entities</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int ENTITY_MODEL_FEATURE_COUNT = 1;
+  int NAMESPACE_DEFINITION__ENTITIES = 1;
+
+  /**
+   * The number of structural features of the '<em>Namespace Definition</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int NAMESPACE_DEFINITION_FEATURE_COUNT = 2;
+
+  /**
+   * The meta object id for the '{@link org.xtext.example.entity.entityDSL.impl.NamespaceDeclarationImpl <em>Namespace Declaration</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.xtext.example.entity.entityDSL.impl.NamespaceDeclarationImpl
+   * @see org.xtext.example.entity.entityDSL.impl.EntityDSLPackageImpl#getNamespaceDeclaration()
+   * @generated
+   */
+  int NAMESPACE_DECLARATION = 1;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int NAMESPACE_DECLARATION__NAME = 0;
+
+  /**
+   * The number of structural features of the '<em>Namespace Declaration</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int NAMESPACE_DECLARATION_FEATURE_COUNT = 1;
 
   /**
    * The meta object id for the '{@link org.xtext.example.entity.entityDSL.impl.EntityImpl <em>Entity</em>}' class.
@@ -92,7 +129,16 @@ public interface EntityDSLPackage extends EPackage
    * @see org.xtext.example.entity.entityDSL.impl.EntityDSLPackageImpl#getEntity()
    * @generated
    */
-  int ENTITY = 1;
+  int ENTITY = 2;
+
+  /**
+   * The feature id for the '<em><b>Abstract</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ENTITY__ABSTRACT = 0;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -101,7 +147,7 @@ public interface EntityDSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int ENTITY__NAME = 0;
+  int ENTITY__NAME = 1;
 
   /**
    * The feature id for the '<em><b>Parent</b></em>' reference.
@@ -110,7 +156,7 @@ public interface EntityDSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int ENTITY__PARENT = 1;
+  int ENTITY__PARENT = 2;
 
   /**
    * The feature id for the '<em><b>Attributes</b></em>' containment reference list.
@@ -119,7 +165,7 @@ public interface EntityDSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int ENTITY__ATTRIBUTES = 2;
+  int ENTITY__ATTRIBUTES = 3;
 
   /**
    * The number of structural features of the '<em>Entity</em>' class.
@@ -128,7 +174,7 @@ public interface EntityDSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int ENTITY_FEATURE_COUNT = 3;
+  int ENTITY_FEATURE_COUNT = 4;
 
   /**
    * The meta object id for the '{@link org.xtext.example.entity.entityDSL.impl.AttributeImpl <em>Attribute</em>}' class.
@@ -138,7 +184,7 @@ public interface EntityDSLPackage extends EPackage
    * @see org.xtext.example.entity.entityDSL.impl.EntityDSLPackageImpl#getAttribute()
    * @generated
    */
-  int ATTRIBUTE = 2;
+  int ATTRIBUTE = 3;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -169,25 +215,57 @@ public interface EntityDSLPackage extends EPackage
 
 
   /**
-   * Returns the meta object for class '{@link org.xtext.example.entity.entityDSL.EntityModel <em>Entity Model</em>}'.
+   * Returns the meta object for class '{@link org.xtext.example.entity.entityDSL.NamespaceDefinition <em>Namespace Definition</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Entity Model</em>'.
-   * @see org.xtext.example.entity.entityDSL.EntityModel
+   * @return the meta object for class '<em>Namespace Definition</em>'.
+   * @see org.xtext.example.entity.entityDSL.NamespaceDefinition
    * @generated
    */
-  EClass getEntityModel();
+  EClass getNamespaceDefinition();
 
   /**
-   * Returns the meta object for the containment reference list '{@link org.xtext.example.entity.entityDSL.EntityModel#getEntities <em>Entities</em>}'.
+   * Returns the meta object for the containment reference '{@link org.xtext.example.entity.entityDSL.NamespaceDefinition#getNamespace <em>Namespace</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Entities</em>'.
-   * @see org.xtext.example.entity.entityDSL.EntityModel#getEntities()
-   * @see #getEntityModel()
+   * @return the meta object for the containment reference '<em>Namespace</em>'.
+   * @see org.xtext.example.entity.entityDSL.NamespaceDefinition#getNamespace()
+   * @see #getNamespaceDefinition()
    * @generated
    */
-  EReference getEntityModel_Entities();
+  EReference getNamespaceDefinition_Namespace();
+
+  /**
+   * Returns the meta object for the containment reference '{@link org.xtext.example.entity.entityDSL.NamespaceDefinition#getEntities <em>Entities</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Entities</em>'.
+   * @see org.xtext.example.entity.entityDSL.NamespaceDefinition#getEntities()
+   * @see #getNamespaceDefinition()
+   * @generated
+   */
+  EReference getNamespaceDefinition_Entities();
+
+  /**
+   * Returns the meta object for class '{@link org.xtext.example.entity.entityDSL.NamespaceDeclaration <em>Namespace Declaration</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Namespace Declaration</em>'.
+   * @see org.xtext.example.entity.entityDSL.NamespaceDeclaration
+   * @generated
+   */
+  EClass getNamespaceDeclaration();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.xtext.example.entity.entityDSL.NamespaceDeclaration#getName <em>Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see org.xtext.example.entity.entityDSL.NamespaceDeclaration#getName()
+   * @see #getNamespaceDeclaration()
+   * @generated
+   */
+  EAttribute getNamespaceDeclaration_Name();
 
   /**
    * Returns the meta object for class '{@link org.xtext.example.entity.entityDSL.Entity <em>Entity</em>}'.
@@ -198,6 +276,17 @@ public interface EntityDSLPackage extends EPackage
    * @generated
    */
   EClass getEntity();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.xtext.example.entity.entityDSL.Entity#isAbstract <em>Abstract</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Abstract</em>'.
+   * @see org.xtext.example.entity.entityDSL.Entity#isAbstract()
+   * @see #getEntity()
+   * @generated
+   */
+  EAttribute getEntity_Abstract();
 
   /**
    * Returns the meta object for the attribute '{@link org.xtext.example.entity.entityDSL.Entity#getName <em>Name</em>}'.
@@ -288,22 +377,48 @@ public interface EntityDSLPackage extends EPackage
   interface Literals
   {
     /**
-     * The meta object literal for the '{@link org.xtext.example.entity.entityDSL.impl.EntityModelImpl <em>Entity Model</em>}' class.
+     * The meta object literal for the '{@link org.xtext.example.entity.entityDSL.impl.NamespaceDefinitionImpl <em>Namespace Definition</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see org.xtext.example.entity.entityDSL.impl.EntityModelImpl
-     * @see org.xtext.example.entity.entityDSL.impl.EntityDSLPackageImpl#getEntityModel()
+     * @see org.xtext.example.entity.entityDSL.impl.NamespaceDefinitionImpl
+     * @see org.xtext.example.entity.entityDSL.impl.EntityDSLPackageImpl#getNamespaceDefinition()
      * @generated
      */
-    EClass ENTITY_MODEL = eINSTANCE.getEntityModel();
+    EClass NAMESPACE_DEFINITION = eINSTANCE.getNamespaceDefinition();
 
     /**
-     * The meta object literal for the '<em><b>Entities</b></em>' containment reference list feature.
+     * The meta object literal for the '<em><b>Namespace</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference ENTITY_MODEL__ENTITIES = eINSTANCE.getEntityModel_Entities();
+    EReference NAMESPACE_DEFINITION__NAMESPACE = eINSTANCE.getNamespaceDefinition_Namespace();
+
+    /**
+     * The meta object literal for the '<em><b>Entities</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference NAMESPACE_DEFINITION__ENTITIES = eINSTANCE.getNamespaceDefinition_Entities();
+
+    /**
+     * The meta object literal for the '{@link org.xtext.example.entity.entityDSL.impl.NamespaceDeclarationImpl <em>Namespace Declaration</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.xtext.example.entity.entityDSL.impl.NamespaceDeclarationImpl
+     * @see org.xtext.example.entity.entityDSL.impl.EntityDSLPackageImpl#getNamespaceDeclaration()
+     * @generated
+     */
+    EClass NAMESPACE_DECLARATION = eINSTANCE.getNamespaceDeclaration();
+
+    /**
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute NAMESPACE_DECLARATION__NAME = eINSTANCE.getNamespaceDeclaration_Name();
 
     /**
      * The meta object literal for the '{@link org.xtext.example.entity.entityDSL.impl.EntityImpl <em>Entity</em>}' class.
@@ -314,6 +429,14 @@ public interface EntityDSLPackage extends EPackage
      * @generated
      */
     EClass ENTITY = eINSTANCE.getEntity();
+
+    /**
+     * The meta object literal for the '<em><b>Abstract</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute ENTITY__ABSTRACT = eINSTANCE.getEntity_Abstract();
 
     /**
      * The meta object literal for the '<em><b>Name</b></em>' attribute feature.

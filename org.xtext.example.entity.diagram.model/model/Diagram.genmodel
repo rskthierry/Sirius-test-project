@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.xtext.example.entity.diagram.model/src" modelPluginID="org.xtext.example.entity.diagram.model"
+    modelName="Diagram" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="6.0" copyrightFields="false"
+    usedGenPackages="../../org.xtext.example.entity/model/generated/EntityDSL.genmodel#//entityDSL"
+    operationReflection="true" importOrganizing="true">
+  <foreignModel>Diagram.ecore</foreignModel>
+  <genPackages prefix="Diagram" disposableProviderFactory="true" ecorePackage="Diagram.ecore#/">
+    <genClasses ecoreClass="Diagram.ecore#//Diagram">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Diagram.ecore#//Diagram/dNamespaces"/>
+    </genClasses>
+    <genClasses ecoreClass="Diagram.ecore#//DNamespace">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Diagram.ecore#//DNamespace/name"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Diagram.ecore#//DNamespace/parent"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Diagram.ecore#//DNamespace/dEntities"/>
+    </genClasses>
+    <genClasses ecoreClass="Diagram.ecore#//DEntity">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Diagram.ecore#//DEntity/entity"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Diagram.ecore#//DEntity/parent"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Diagram.ecore#//DEntity/TPort"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Diagram.ecore#//DEntity/BPort"/>
+    </genClasses>
+    <genClasses ecoreClass="Diagram.ecore#//DPort"/>
+  </genPackages>
+</genmodel:GenModel>

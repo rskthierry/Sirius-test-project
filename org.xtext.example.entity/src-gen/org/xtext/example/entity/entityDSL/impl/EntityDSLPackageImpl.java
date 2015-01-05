@@ -13,7 +13,8 @@ import org.xtext.example.entity.entityDSL.Attribute;
 import org.xtext.example.entity.entityDSL.Entity;
 import org.xtext.example.entity.entityDSL.EntityDSLFactory;
 import org.xtext.example.entity.entityDSL.EntityDSLPackage;
-import org.xtext.example.entity.entityDSL.EntityModel;
+import org.xtext.example.entity.entityDSL.NamespaceDeclaration;
+import org.xtext.example.entity.entityDSL.NamespaceDefinition;
 
 /**
  * <!-- begin-user-doc -->
@@ -28,7 +29,14 @@ public class EntityDSLPackageImpl extends EPackageImpl implements EntityDSLPacka
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass entityModelEClass = null;
+  private EClass namespaceDefinitionEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass namespaceDeclarationEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -112,9 +120,9 @@ public class EntityDSLPackageImpl extends EPackageImpl implements EntityDSLPacka
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getEntityModel()
+  public EClass getNamespaceDefinition()
   {
-    return entityModelEClass;
+    return namespaceDefinitionEClass;
   }
 
   /**
@@ -122,9 +130,39 @@ public class EntityDSLPackageImpl extends EPackageImpl implements EntityDSLPacka
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getEntityModel_Entities()
+  public EReference getNamespaceDefinition_Namespace()
   {
-    return (EReference)entityModelEClass.getEStructuralFeatures().get(0);
+    return (EReference)namespaceDefinitionEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getNamespaceDefinition_Entities()
+  {
+    return (EReference)namespaceDefinitionEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getNamespaceDeclaration()
+  {
+    return namespaceDeclarationEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getNamespaceDeclaration_Name()
+  {
+    return (EAttribute)namespaceDeclarationEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -142,7 +180,7 @@ public class EntityDSLPackageImpl extends EPackageImpl implements EntityDSLPacka
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getEntity_Name()
+  public EAttribute getEntity_Abstract()
   {
     return (EAttribute)entityEClass.getEStructuralFeatures().get(0);
   }
@@ -152,9 +190,19 @@ public class EntityDSLPackageImpl extends EPackageImpl implements EntityDSLPacka
    * <!-- end-user-doc -->
    * @generated
    */
+  public EAttribute getEntity_Name()
+  {
+    return (EAttribute)entityEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EReference getEntity_Parent()
   {
-    return (EReference)entityEClass.getEStructuralFeatures().get(1);
+    return (EReference)entityEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -164,7 +212,7 @@ public class EntityDSLPackageImpl extends EPackageImpl implements EntityDSLPacka
    */
   public EReference getEntity_Attributes()
   {
-    return (EReference)entityEClass.getEStructuralFeatures().get(2);
+    return (EReference)entityEClass.getEStructuralFeatures().get(3);
   }
 
   /**
@@ -227,10 +275,15 @@ public class EntityDSLPackageImpl extends EPackageImpl implements EntityDSLPacka
     isCreated = true;
 
     // Create classes and their features
-    entityModelEClass = createEClass(ENTITY_MODEL);
-    createEReference(entityModelEClass, ENTITY_MODEL__ENTITIES);
+    namespaceDefinitionEClass = createEClass(NAMESPACE_DEFINITION);
+    createEReference(namespaceDefinitionEClass, NAMESPACE_DEFINITION__NAMESPACE);
+    createEReference(namespaceDefinitionEClass, NAMESPACE_DEFINITION__ENTITIES);
+
+    namespaceDeclarationEClass = createEClass(NAMESPACE_DECLARATION);
+    createEAttribute(namespaceDeclarationEClass, NAMESPACE_DECLARATION__NAME);
 
     entityEClass = createEClass(ENTITY);
+    createEAttribute(entityEClass, ENTITY__ABSTRACT);
     createEAttribute(entityEClass, ENTITY__NAME);
     createEReference(entityEClass, ENTITY__PARENT);
     createEReference(entityEClass, ENTITY__ATTRIBUTES);
@@ -271,10 +324,15 @@ public class EntityDSLPackageImpl extends EPackageImpl implements EntityDSLPacka
     // Add supertypes to classes
 
     // Initialize classes and features; add operations and parameters
-    initEClass(entityModelEClass, EntityModel.class, "EntityModel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getEntityModel_Entities(), this.getEntity(), null, "entities", null, 0, -1, EntityModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(namespaceDefinitionEClass, NamespaceDefinition.class, "NamespaceDefinition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getNamespaceDefinition_Namespace(), this.getNamespaceDeclaration(), null, "namespace", null, 0, 1, NamespaceDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getNamespaceDefinition_Entities(), this.getEntity(), null, "entities", null, 0, 1, NamespaceDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(namespaceDeclarationEClass, NamespaceDeclaration.class, "NamespaceDeclaration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getNamespaceDeclaration_Name(), ecorePackage.getEString(), "name", null, 0, 1, NamespaceDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(entityEClass, Entity.class, "Entity", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getEntity_Abstract(), ecorePackage.getEBoolean(), "abstract", null, 0, 1, Entity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getEntity_Name(), ecorePackage.getEString(), "name", null, 0, 1, Entity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getEntity_Parent(), this.getEntity(), null, "parent", null, 0, 1, Entity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getEntity_Attributes(), this.getAttribute(), null, "attributes", null, 0, -1, Entity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

@@ -64,7 +64,8 @@ public class EntityDSLFactoryImpl extends EFactoryImpl implements EntityDSLFacto
   {
     switch (eClass.getClassifierID())
     {
-      case EntityDSLPackage.ENTITY_MODEL: return createEntityModel();
+      case EntityDSLPackage.NAMESPACE_DEFINITION: return createNamespaceDefinition();
+      case EntityDSLPackage.NAMESPACE_DECLARATION: return createNamespaceDeclaration();
       case EntityDSLPackage.ENTITY: return createEntity();
       case EntityDSLPackage.ATTRIBUTE: return createAttribute();
       default:
@@ -77,10 +78,21 @@ public class EntityDSLFactoryImpl extends EFactoryImpl implements EntityDSLFacto
    * <!-- end-user-doc -->
    * @generated
    */
-  public EntityModel createEntityModel()
+  public NamespaceDefinition createNamespaceDefinition()
   {
-    EntityModelImpl entityModel = new EntityModelImpl();
-    return entityModel;
+    NamespaceDefinitionImpl namespaceDefinition = new NamespaceDefinitionImpl();
+    return namespaceDefinition;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NamespaceDeclaration createNamespaceDeclaration()
+  {
+    NamespaceDeclarationImpl namespaceDeclaration = new NamespaceDeclarationImpl();
+    return namespaceDeclaration;
   }
 
   /**

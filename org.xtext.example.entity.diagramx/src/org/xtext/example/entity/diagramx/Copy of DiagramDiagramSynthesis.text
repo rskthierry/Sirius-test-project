@@ -1,0 +1,134 @@
+package org.xtext.example.entity.diagramx
+
+import de.cau.cs.kieler.core.kgraph.KNode
+import de.cau.cs.kieler.core.krendering.KRenderingFactory
+import de.cau.cs.kieler.core.krendering.LineStyle
+import de.cau.cs.kieler.core.krendering.extensions.KColorExtensions
+import de.cau.cs.kieler.core.krendering.extensions.KContainerRenderingExtensions
+import de.cau.cs.kieler.core.krendering.extensions.KEdgeExtensions
+import de.cau.cs.kieler.core.krendering.extensions.KLabelExtensions
+import de.cau.cs.kieler.core.krendering.extensions.KNodeExtensions
+import de.cau.cs.kieler.core.krendering.extensions.KPolylineExtensions
+import de.cau.cs.kieler.core.krendering.extensions.KPortExtensions
+import de.cau.cs.kieler.core.krendering.extensions.KRenderingExtensions
+import de.cau.cs.kieler.kiml.options.Direction
+import de.cau.cs.kieler.kiml.options.LayoutOptions
+import de.cau.cs.kieler.klighd.syntheses.AbstractDiagramSynthesis
+import diagram.DNamespace
+import diagram.Diagram
+import javax.inject.Inject
+import org.eclipse.emf.common.util.EList
+import diagram.DEntity
+import de.cau.cs.kieler.core.krendering.KRectangle
+
+class DiagramDiagramSynthesis extends AbstractDiagramSynthesis<Diagram> {
+
+	@Inject extension KNodeExtensions
+	@Inject extension KEdgeExtensions
+	@Inject extension KPortExtensions
+	@Inject extension KLabelExtensions
+	@Inject extension KRenderingExtensions
+	@Inject extension KContainerRenderingExtensions
+	@Inject extension KPolylineExtensions
+	@Inject extension KColorExtensions
+	extension KRenderingFactory = KRenderingFactory.eINSTANCE
+
+	override KNode transform(Diagram diagram) {
+		return createNode().associateWith(diagram) => [
+			it.addLayoutParam(LayoutOptions::ALGORITHM, "de.cau.cs.kieler.kiml.ogdf.planarization");
+			it.addLayoutParam(LayoutOptions::SPACING, 75f);
+			it.addLayoutParam(LayoutOptions::DIRECTION, Direction::UP);
+			diagram.DNamespaces.createElementFigures(it);
+		];
+	}
+
+	def void createElementFigures(EList<DNamespace> dNamespaces, KNode parentNode) {
+		dNamespaces.createNamespaceFigures(parentNode);
+	}
+
+	def void createNamespaceFigures(EList<DNamespace> dNamespaces, KNode parentNode) {
+		dNamespaces.forEach [ DNamespace dNamespace |
+			val KNode namespaceNode = dNamespace.createNode()
+			parentNode.children += namespaceNode.associateWith(dNamespace) => [
+				it.addRectangle => [
+					it.lineWidth = 1;
+					it.lineStyle = LineStyle::DASH
+					it.setBackgroundGradient("white".color, "LemonChiffon".color, 0)
+					it.shadow = "black".color;
+					it.setGridPlacement(1).from(LEFT, 4, 0, TOP, 4, 0).to(RIGHT, 4, 0, BOTTOM, 4, 0);
+					it.addRectangle => [
+						it.invisible = true;
+						it.addRectangle => [
+							it.invisible = true;
+							it.setPointPlacementData(LEFT, 0, 0.5f, TOP, 0, 0.5f, H_CENTRAL, V_CENTRAL, 0, 0, 0, 0);
+							it.addText(dNamespace.name).associateWith(dNamespace) => [
+								it.fontSize = 13;
+								it.fontBold = true;
+								it.cursorSelectable = false;
+								it.setAreaPlacementData.from(LEFT, 5, 0, TOP, 5, 0).to(RIGHT, 5, 0, BOTTOM, 5, 0);
+							]
+						]
+					]
+					it.addHorizontalLine(1, 1.0f);
+					it.addRectangle => [
+						it.invisible = true;
+						it.addRectangle => [
+							it.invisible = false;
+							it.setBackgroundGradient("white".color, "red".color, 0)
+							it.setPointPlacementData(LEFT, 0, 0.5f, TOP, 2, 0.5f, H_CENTRAL, V_CENTRAL, 0, 0, 0, 0);
+							if (!dNamespace.DEntities.empty) {
+								val EList<DEntity> entities = dNamespace.DEntities
+								entities.forEach [ DEntity dEntity |
+									namespaceNode.children += createNode().associateWith(dEntity) => [
+										it.addRectangle => [
+											it.invisible = false;
+											it.addRectangle => [
+												it.invisible = true;
+												it.setPointPlacementData(LEFT, 0, 0.5f, TOP, 0, 0.5f, H_CENTRAL,
+													V_CENTRAL, 0, 0, 0, 0);
+												it.addText(dEntity.entity.name).associateWith(dEntity) => [
+													it.fontSize = 13;
+													it.fontBold = true;
+													it.cursorSelectable = false;
+													it.setPointPlacementData(LEFT, 10, 0, TOP, 0, 0.5f, H_LEFT,
+														V_CENTRAL, 10, 10, 0, 0);
+												]
+											]
+										]
+									]
+								]
+							}
+						]
+					]
+				]
+			]
+		]
+	}
+
+	def void createEntityNodes(EList<DEntity> entities, KNode namespaceNode) {
+		entities.forEach [ DEntity dEntity |
+			namespaceNode.children += createNode().associateWith(dEntity) => [
+				it.addRectangle => [
+					it.lineWidth = 1;
+					it.setBackgroundGradient("white".color, "red".color, 0)
+					it.shadow = "black".color;
+					it.setGridPlacement(1).from(LEFT, 2, 0, TOP, 2, 0).to(RIGHT, 2, 0, BOTTOM, 2, 0);
+					it.addRectangle => [
+						it.invisible = false;
+						it.addRectangle => [
+							it.invisible = true;
+							it.setPointPlacementData(LEFT, 0, 0.5f, TOP, 0, 0.5f, H_CENTRAL, V_CENTRAL, 0, 0, 0, 0);
+							it.addText(dEntity.entity.name).associateWith(dEntity) => [
+								it.fontSize = 13;
+								it.fontBold = true;
+								it.cursorSelectable = false;
+								it.setPointPlacementData(LEFT, 10, 0, TOP, 0, 0.5f, H_LEFT, V_CENTRAL, 10, 10, 0, 0);
+							]
+						]
+					]
+				]
+			]
+		]
+	}
+
+}

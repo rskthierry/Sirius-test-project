@@ -75,9 +75,14 @@ public class EntityDSLAdapterFactory extends AdapterFactoryImpl
     new EntityDSLSwitch<Adapter>()
     {
       @Override
-      public Adapter caseEntityModel(EntityModel object)
+      public Adapter caseNamespaceDefinition(NamespaceDefinition object)
       {
-        return createEntityModelAdapter();
+        return createNamespaceDefinitionAdapter();
+      }
+      @Override
+      public Adapter caseNamespaceDeclaration(NamespaceDeclaration object)
+      {
+        return createNamespaceDeclarationAdapter();
       }
       @Override
       public Adapter caseEntity(Entity object)
@@ -112,16 +117,31 @@ public class EntityDSLAdapterFactory extends AdapterFactoryImpl
 
 
   /**
-   * Creates a new adapter for an object of class '{@link org.xtext.example.entity.entityDSL.EntityModel <em>Entity Model</em>}'.
+   * Creates a new adapter for an object of class '{@link org.xtext.example.entity.entityDSL.NamespaceDefinition <em>Namespace Definition</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.xtext.example.entity.entityDSL.EntityModel
+   * @see org.xtext.example.entity.entityDSL.NamespaceDefinition
    * @generated
    */
-  public Adapter createEntityModelAdapter()
+  public Adapter createNamespaceDefinitionAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.xtext.example.entity.entityDSL.NamespaceDeclaration <em>Namespace Declaration</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.xtext.example.entity.entityDSL.NamespaceDeclaration
+   * @generated
+   */
+  public Adapter createNamespaceDeclarationAdapter()
   {
     return null;
   }

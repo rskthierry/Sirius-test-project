@@ -37,14 +37,22 @@ public class EntityDSLParser extends AbstractContentAssistParser {
 			nameMappings = new HashMap<AbstractElement, String>() {
 				private static final long serialVersionUID = 1L;
 				{
+					put(grammarAccess.getNamespaceDefinitionAccess().getGroup(), "rule__NamespaceDefinition__Group__0");
+					put(grammarAccess.getNamespaceDeclarationAccess().getGroup(), "rule__NamespaceDeclaration__Group__0");
+					put(grammarAccess.getQualifedNameAccess().getGroup(), "rule__QualifedName__Group__0");
+					put(grammarAccess.getQualifedNameAccess().getGroup_1(), "rule__QualifedName__Group_1__0");
+					put(grammarAccess.getQualifedNameWithWildcardAccess().getGroup(), "rule__QualifedNameWithWildcard__Group__0");
 					put(grammarAccess.getEntityAccess().getGroup(), "rule__Entity__Group__0");
-					put(grammarAccess.getEntityAccess().getGroup_2(), "rule__Entity__Group_2__0");
+					put(grammarAccess.getEntityAccess().getGroup_3(), "rule__Entity__Group_3__0");
 					put(grammarAccess.getAttributeAccess().getGroup(), "rule__Attribute__Group__0");
 					put(grammarAccess.getAttributeAccess().getGroup_2(), "rule__Attribute__Group_2__0");
-					put(grammarAccess.getEntityModelAccess().getEntitiesAssignment(), "rule__EntityModel__EntitiesAssignment");
-					put(grammarAccess.getEntityAccess().getNameAssignment_1(), "rule__Entity__NameAssignment_1");
-					put(grammarAccess.getEntityAccess().getParentAssignment_2_1(), "rule__Entity__ParentAssignment_2_1");
-					put(grammarAccess.getEntityAccess().getAttributesAssignment_4(), "rule__Entity__AttributesAssignment_4");
+					put(grammarAccess.getNamespaceDefinitionAccess().getNamespaceAssignment_0(), "rule__NamespaceDefinition__NamespaceAssignment_0");
+					put(grammarAccess.getNamespaceDefinitionAccess().getEntitiesAssignment_1(), "rule__NamespaceDefinition__EntitiesAssignment_1");
+					put(grammarAccess.getNamespaceDeclarationAccess().getNameAssignment_1(), "rule__NamespaceDeclaration__NameAssignment_1");
+					put(grammarAccess.getEntityAccess().getAbstractAssignment_0(), "rule__Entity__AbstractAssignment_0");
+					put(grammarAccess.getEntityAccess().getNameAssignment_2(), "rule__Entity__NameAssignment_2");
+					put(grammarAccess.getEntityAccess().getParentAssignment_3_1(), "rule__Entity__ParentAssignment_3_1");
+					put(grammarAccess.getEntityAccess().getAttributesAssignment_5(), "rule__Entity__AttributesAssignment_5");
 					put(grammarAccess.getAttributeAccess().getNameAssignment_1(), "rule__Attribute__NameAssignment_1");
 					put(grammarAccess.getAttributeAccess().getTypeAssignment_2_1(), "rule__Attribute__TypeAssignment_2_1");
 				}
@@ -57,7 +65,7 @@ public class EntityDSLParser extends AbstractContentAssistParser {
 	protected Collection<FollowElement> getFollowElements(AbstractInternalContentAssistParser parser) {
 		try {
 			org.xtext.example.entity.ui.contentassist.antlr.internal.InternalEntityDSLParser typedParser = (org.xtext.example.entity.ui.contentassist.antlr.internal.InternalEntityDSLParser) parser;
-			typedParser.entryRuleEntityModel();
+			typedParser.entryRuleNamespaceDefinition();
 			return typedParser.getFollowElements();
 		} catch(RecognitionException ex) {
 			throw new RuntimeException(ex);

@@ -2,11 +2,21 @@ grammar org.xtext.example.entity.EntityDSL with org.eclipse.xtext.common.Termina
 
 generate entityDSL "http://www.xtext.org/example/entity/EntityDSL"
 
-EntityModel:
-	entities+=Entity*;
+NamespaceDefinition:
+	namespace=NamespaceDeclaration
+	entities=Entity;
+
+NamespaceDeclaration:
+	'namespace' name=QualifedName;
+
+QualifedName:
+	ID ('.' ID)*;
+
+QualifedNameWithWildcard:
+	QualifedName '.*'?;
 
 Entity:
-	'entity' name=ID ('extends' parent=[Entity|ID])? '{'
+	(abstract?='abstract')? 'entity' name=ID ('extends' parent=[Entity|ID])? '{'
 	attributes+=Attribute*
 	'}';
 

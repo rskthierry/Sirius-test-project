@@ -23,13 +23,22 @@ public interface EntityDSLFactory extends EFactory
   EntityDSLFactory eINSTANCE = org.xtext.example.entity.entityDSL.impl.EntityDSLFactoryImpl.init();
 
   /**
-   * Returns a new object of class '<em>Entity Model</em>'.
+   * Returns a new object of class '<em>Namespace Definition</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Entity Model</em>'.
+   * @return a new object of class '<em>Namespace Definition</em>'.
    * @generated
    */
-  EntityModel createEntityModel();
+  NamespaceDefinition createNamespaceDefinition();
+
+  /**
+   * Returns a new object of class '<em>Namespace Declaration</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Namespace Declaration</em>'.
+   * @generated
+   */
+  NamespaceDeclaration createNamespaceDeclaration();
 
   /**
    * Returns a new object of class '<em>Entity</em>'.

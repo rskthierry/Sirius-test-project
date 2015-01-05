@@ -29,6 +29,7 @@ import org.xtext.example.entity.entityDSL.EntityDSLPackage;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.xtext.example.entity.entityDSL.impl.EntityImpl#isAbstract <em>Abstract</em>}</li>
  *   <li>{@link org.xtext.example.entity.entityDSL.impl.EntityImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.xtext.example.entity.entityDSL.impl.EntityImpl#getParent <em>Parent</em>}</li>
  *   <li>{@link org.xtext.example.entity.entityDSL.impl.EntityImpl#getAttributes <em>Attributes</em>}</li>
@@ -39,6 +40,26 @@ import org.xtext.example.entity.entityDSL.EntityDSLPackage;
  */
 public class EntityImpl extends MinimalEObjectImpl.Container implements Entity
 {
+  /**
+   * The default value of the '{@link #isAbstract() <em>Abstract</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #isAbstract()
+   * @generated
+   * @ordered
+   */
+  protected static final boolean ABSTRACT_EDEFAULT = false;
+
+  /**
+   * The cached value of the '{@link #isAbstract() <em>Abstract</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #isAbstract()
+   * @generated
+   * @ordered
+   */
+  protected boolean abstract_ = ABSTRACT_EDEFAULT;
+
   /**
    * The default value of the '{@link #getName() <em>Name</em>}' attribute.
    * <!-- begin-user-doc -->
@@ -98,6 +119,29 @@ public class EntityImpl extends MinimalEObjectImpl.Container implements Entity
   protected EClass eStaticClass()
   {
     return EntityDSLPackage.Literals.ENTITY;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public boolean isAbstract()
+  {
+    return abstract_;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setAbstract(boolean newAbstract)
+  {
+    boolean oldAbstract = abstract_;
+    abstract_ = newAbstract;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, EntityDSLPackage.ENTITY__ABSTRACT, oldAbstract, abstract_));
   }
 
   /**
@@ -206,6 +250,8 @@ public class EntityImpl extends MinimalEObjectImpl.Container implements Entity
   {
     switch (featureID)
     {
+      case EntityDSLPackage.ENTITY__ABSTRACT:
+        return isAbstract();
       case EntityDSLPackage.ENTITY__NAME:
         return getName();
       case EntityDSLPackage.ENTITY__PARENT:
@@ -228,6 +274,9 @@ public class EntityImpl extends MinimalEObjectImpl.Container implements Entity
   {
     switch (featureID)
     {
+      case EntityDSLPackage.ENTITY__ABSTRACT:
+        setAbstract((Boolean)newValue);
+        return;
       case EntityDSLPackage.ENTITY__NAME:
         setName((String)newValue);
         return;
@@ -252,6 +301,9 @@ public class EntityImpl extends MinimalEObjectImpl.Container implements Entity
   {
     switch (featureID)
     {
+      case EntityDSLPackage.ENTITY__ABSTRACT:
+        setAbstract(ABSTRACT_EDEFAULT);
+        return;
       case EntityDSLPackage.ENTITY__NAME:
         setName(NAME_EDEFAULT);
         return;
@@ -275,6 +327,8 @@ public class EntityImpl extends MinimalEObjectImpl.Container implements Entity
   {
     switch (featureID)
     {
+      case EntityDSLPackage.ENTITY__ABSTRACT:
+        return abstract_ != ABSTRACT_EDEFAULT;
       case EntityDSLPackage.ENTITY__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
       case EntityDSLPackage.ENTITY__PARENT:
@@ -296,7 +350,9 @@ public class EntityImpl extends MinimalEObjectImpl.Container implements Entity
     if (eIsProxy()) return super.toString();
 
     StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (name: ");
+    result.append(" (abstract: ");
+    result.append(abstract_);
+    result.append(", name: ");
     result.append(name);
     result.append(')');
     return result.toString();

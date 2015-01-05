@@ -25,7 +25,7 @@ public class EntityDSLParser extends org.eclipse.xtext.parser.antlr.AbstractAntl
 	
 	@Override 
 	protected String getDefaultRuleName() {
-		return "EntityModel";
+		return "NamespaceDefinition";
 	}
 	
 	public EntityDSLGrammarAccess getGrammarAccess() {

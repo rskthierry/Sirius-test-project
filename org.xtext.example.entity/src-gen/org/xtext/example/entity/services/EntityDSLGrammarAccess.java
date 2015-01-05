@@ -18,80 +18,172 @@ import org.eclipse.xtext.common.services.TerminalsGrammarAccess;
 public class EntityDSLGrammarAccess extends AbstractGrammarElementFinder {
 	
 	
-	public class EntityModelElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "EntityModel");
-		private final Assignment cEntitiesAssignment = (Assignment)rule.eContents().get(1);
-		private final RuleCall cEntitiesEntityParserRuleCall_0 = (RuleCall)cEntitiesAssignment.eContents().get(0);
+	public class NamespaceDefinitionElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "NamespaceDefinition");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Assignment cNamespaceAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final RuleCall cNamespaceNamespaceDeclarationParserRuleCall_0_0 = (RuleCall)cNamespaceAssignment_0.eContents().get(0);
+		private final Assignment cEntitiesAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cEntitiesEntityParserRuleCall_1_0 = (RuleCall)cEntitiesAssignment_1.eContents().get(0);
 		
-		//EntityModel:
-		//	entities+=Entity*;
+		//NamespaceDefinition:
+		//	namespace=NamespaceDeclaration entities=Entity;
 		public ParserRule getRule() { return rule; }
 
-		//entities+=Entity*
-		public Assignment getEntitiesAssignment() { return cEntitiesAssignment; }
+		//namespace=NamespaceDeclaration entities=Entity
+		public Group getGroup() { return cGroup; }
+
+		//namespace=NamespaceDeclaration
+		public Assignment getNamespaceAssignment_0() { return cNamespaceAssignment_0; }
+
+		//NamespaceDeclaration
+		public RuleCall getNamespaceNamespaceDeclarationParserRuleCall_0_0() { return cNamespaceNamespaceDeclarationParserRuleCall_0_0; }
+
+		//entities=Entity
+		public Assignment getEntitiesAssignment_1() { return cEntitiesAssignment_1; }
 
 		//Entity
-		public RuleCall getEntitiesEntityParserRuleCall_0() { return cEntitiesEntityParserRuleCall_0; }
+		public RuleCall getEntitiesEntityParserRuleCall_1_0() { return cEntitiesEntityParserRuleCall_1_0; }
+	}
+
+	public class NamespaceDeclarationElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "NamespaceDeclaration");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cNamespaceKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cNameQualifedNameParserRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
+		
+		//NamespaceDeclaration:
+		//	"namespace" name=QualifedName;
+		public ParserRule getRule() { return rule; }
+
+		//"namespace" name=QualifedName
+		public Group getGroup() { return cGroup; }
+
+		//"namespace"
+		public Keyword getNamespaceKeyword_0() { return cNamespaceKeyword_0; }
+
+		//name=QualifedName
+		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
+
+		//QualifedName
+		public RuleCall getNameQualifedNameParserRuleCall_1_0() { return cNameQualifedNameParserRuleCall_1_0; }
+	}
+
+	public class QualifedNameElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "QualifedName");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final RuleCall cIDTerminalRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
+		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
+		private final Keyword cFullStopKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
+		private final RuleCall cIDTerminalRuleCall_1_1 = (RuleCall)cGroup_1.eContents().get(1);
+		
+		//QualifedName:
+		//	ID ("." ID)*;
+		public ParserRule getRule() { return rule; }
+
+		//ID ("." ID)*
+		public Group getGroup() { return cGroup; }
+
+		//ID
+		public RuleCall getIDTerminalRuleCall_0() { return cIDTerminalRuleCall_0; }
+
+		//("." ID)*
+		public Group getGroup_1() { return cGroup_1; }
+
+		//"."
+		public Keyword getFullStopKeyword_1_0() { return cFullStopKeyword_1_0; }
+
+		//ID
+		public RuleCall getIDTerminalRuleCall_1_1() { return cIDTerminalRuleCall_1_1; }
+	}
+
+	public class QualifedNameWithWildcardElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "QualifedNameWithWildcard");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final RuleCall cQualifedNameParserRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
+		private final Keyword cFullStopAsteriskKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		
+		//QualifedNameWithWildcard:
+		//	QualifedName ".*"?;
+		public ParserRule getRule() { return rule; }
+
+		//QualifedName ".*"?
+		public Group getGroup() { return cGroup; }
+
+		//QualifedName
+		public RuleCall getQualifedNameParserRuleCall_0() { return cQualifedNameParserRuleCall_0; }
+
+		//".*"?
+		public Keyword getFullStopAsteriskKeyword_1() { return cFullStopAsteriskKeyword_1; }
 	}
 
 	public class EntityElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Entity");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cEntityKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
-		private final Group cGroup_2 = (Group)cGroup.eContents().get(2);
-		private final Keyword cExtendsKeyword_2_0 = (Keyword)cGroup_2.eContents().get(0);
-		private final Assignment cParentAssignment_2_1 = (Assignment)cGroup_2.eContents().get(1);
-		private final CrossReference cParentEntityCrossReference_2_1_0 = (CrossReference)cParentAssignment_2_1.eContents().get(0);
-		private final RuleCall cParentEntityIDTerminalRuleCall_2_1_0_1 = (RuleCall)cParentEntityCrossReference_2_1_0.eContents().get(1);
-		private final Keyword cLeftCurlyBracketKeyword_3 = (Keyword)cGroup.eContents().get(3);
-		private final Assignment cAttributesAssignment_4 = (Assignment)cGroup.eContents().get(4);
-		private final RuleCall cAttributesAttributeParserRuleCall_4_0 = (RuleCall)cAttributesAssignment_4.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_5 = (Keyword)cGroup.eContents().get(5);
+		private final Assignment cAbstractAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final Keyword cAbstractAbstractKeyword_0_0 = (Keyword)cAbstractAssignment_0.eContents().get(0);
+		private final Keyword cEntityKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cNameIDTerminalRuleCall_2_0 = (RuleCall)cNameAssignment_2.eContents().get(0);
+		private final Group cGroup_3 = (Group)cGroup.eContents().get(3);
+		private final Keyword cExtendsKeyword_3_0 = (Keyword)cGroup_3.eContents().get(0);
+		private final Assignment cParentAssignment_3_1 = (Assignment)cGroup_3.eContents().get(1);
+		private final CrossReference cParentEntityCrossReference_3_1_0 = (CrossReference)cParentAssignment_3_1.eContents().get(0);
+		private final RuleCall cParentEntityIDTerminalRuleCall_3_1_0_1 = (RuleCall)cParentEntityCrossReference_3_1_0.eContents().get(1);
+		private final Keyword cLeftCurlyBracketKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		private final Assignment cAttributesAssignment_5 = (Assignment)cGroup.eContents().get(5);
+		private final RuleCall cAttributesAttributeParserRuleCall_5_0 = (RuleCall)cAttributesAssignment_5.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_6 = (Keyword)cGroup.eContents().get(6);
 		
 		//Entity:
-		//	"entity" name=ID ("extends" parent=[Entity])? "{" attributes+=Attribute* "}";
+		//	abstract?="abstract"? "entity" name=ID ("extends" parent=[Entity])? "{" attributes+=Attribute* "}";
 		public ParserRule getRule() { return rule; }
 
-		//"entity" name=ID ("extends" parent=[Entity])? "{" attributes+=Attribute* "}"
+		//abstract?="abstract"? "entity" name=ID ("extends" parent=[Entity])? "{" attributes+=Attribute* "}"
 		public Group getGroup() { return cGroup; }
 
+		//abstract?="abstract"?
+		public Assignment getAbstractAssignment_0() { return cAbstractAssignment_0; }
+
+		//"abstract"
+		public Keyword getAbstractAbstractKeyword_0_0() { return cAbstractAbstractKeyword_0_0; }
+
 		//"entity"
-		public Keyword getEntityKeyword_0() { return cEntityKeyword_0; }
+		public Keyword getEntityKeyword_1() { return cEntityKeyword_1; }
 
 		//name=ID
-		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
+		public Assignment getNameAssignment_2() { return cNameAssignment_2; }
 
 		//ID
-		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
+		public RuleCall getNameIDTerminalRuleCall_2_0() { return cNameIDTerminalRuleCall_2_0; }
 
 		//("extends" parent=[Entity])?
-		public Group getGroup_2() { return cGroup_2; }
+		public Group getGroup_3() { return cGroup_3; }
 
 		//"extends"
-		public Keyword getExtendsKeyword_2_0() { return cExtendsKeyword_2_0; }
+		public Keyword getExtendsKeyword_3_0() { return cExtendsKeyword_3_0; }
 
 		//parent=[Entity]
-		public Assignment getParentAssignment_2_1() { return cParentAssignment_2_1; }
+		public Assignment getParentAssignment_3_1() { return cParentAssignment_3_1; }
 
 		//[Entity]
-		public CrossReference getParentEntityCrossReference_2_1_0() { return cParentEntityCrossReference_2_1_0; }
+		public CrossReference getParentEntityCrossReference_3_1_0() { return cParentEntityCrossReference_3_1_0; }
 
 		//ID
-		public RuleCall getParentEntityIDTerminalRuleCall_2_1_0_1() { return cParentEntityIDTerminalRuleCall_2_1_0_1; }
+		public RuleCall getParentEntityIDTerminalRuleCall_3_1_0_1() { return cParentEntityIDTerminalRuleCall_3_1_0_1; }
 
 		//"{"
-		public Keyword getLeftCurlyBracketKeyword_3() { return cLeftCurlyBracketKeyword_3; }
+		public Keyword getLeftCurlyBracketKeyword_4() { return cLeftCurlyBracketKeyword_4; }
 
 		//attributes+=Attribute*
-		public Assignment getAttributesAssignment_4() { return cAttributesAssignment_4; }
+		public Assignment getAttributesAssignment_5() { return cAttributesAssignment_5; }
 
 		//Attribute
-		public RuleCall getAttributesAttributeParserRuleCall_4_0() { return cAttributesAttributeParserRuleCall_4_0; }
+		public RuleCall getAttributesAttributeParserRuleCall_5_0() { return cAttributesAttributeParserRuleCall_5_0; }
 
 		//"}"
-		public Keyword getRightCurlyBracketKeyword_5() { return cRightCurlyBracketKeyword_5; }
+		public Keyword getRightCurlyBracketKeyword_6() { return cRightCurlyBracketKeyword_6; }
 	}
 
 	public class AttributeElements extends AbstractParserRuleElementFinder {
@@ -139,7 +231,10 @@ public class EntityDSLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	
-	private EntityModelElements pEntityModel;
+	private NamespaceDefinitionElements pNamespaceDefinition;
+	private NamespaceDeclarationElements pNamespaceDeclaration;
+	private QualifedNameElements pQualifedName;
+	private QualifedNameWithWildcardElements pQualifedNameWithWildcard;
 	private EntityElements pEntity;
 	private AttributeElements pAttribute;
 	
@@ -181,18 +276,48 @@ public class EntityDSLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	
-	//EntityModel:
-	//	entities+=Entity*;
-	public EntityModelElements getEntityModelAccess() {
-		return (pEntityModel != null) ? pEntityModel : (pEntityModel = new EntityModelElements());
+	//NamespaceDefinition:
+	//	namespace=NamespaceDeclaration entities=Entity;
+	public NamespaceDefinitionElements getNamespaceDefinitionAccess() {
+		return (pNamespaceDefinition != null) ? pNamespaceDefinition : (pNamespaceDefinition = new NamespaceDefinitionElements());
 	}
 	
-	public ParserRule getEntityModelRule() {
-		return getEntityModelAccess().getRule();
+	public ParserRule getNamespaceDefinitionRule() {
+		return getNamespaceDefinitionAccess().getRule();
+	}
+
+	//NamespaceDeclaration:
+	//	"namespace" name=QualifedName;
+	public NamespaceDeclarationElements getNamespaceDeclarationAccess() {
+		return (pNamespaceDeclaration != null) ? pNamespaceDeclaration : (pNamespaceDeclaration = new NamespaceDeclarationElements());
+	}
+	
+	public ParserRule getNamespaceDeclarationRule() {
+		return getNamespaceDeclarationAccess().getRule();
+	}
+
+	//QualifedName:
+	//	ID ("." ID)*;
+	public QualifedNameElements getQualifedNameAccess() {
+		return (pQualifedName != null) ? pQualifedName : (pQualifedName = new QualifedNameElements());
+	}
+	
+	public ParserRule getQualifedNameRule() {
+		return getQualifedNameAccess().getRule();
+	}
+
+	//QualifedNameWithWildcard:
+	//	QualifedName ".*"?;
+	public QualifedNameWithWildcardElements getQualifedNameWithWildcardAccess() {
+		return (pQualifedNameWithWildcard != null) ? pQualifedNameWithWildcard : (pQualifedNameWithWildcard = new QualifedNameWithWildcardElements());
+	}
+	
+	public ParserRule getQualifedNameWithWildcardRule() {
+		return getQualifedNameWithWildcardAccess().getRule();
 	}
 
 	//Entity:
-	//	"entity" name=ID ("extends" parent=[Entity])? "{" attributes+=Attribute* "}";
+	//	abstract?="abstract"? "entity" name=ID ("extends" parent=[Entity])? "{" attributes+=Attribute* "}";
 	public EntityElements getEntityAccess() {
 		return (pEntity != null) ? pEntity : (pEntity = new EntityElements());
 	}
